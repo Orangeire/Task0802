@@ -18,5 +18,18 @@ public class Transaction {
         this.amount = amount;
     }
 
+    public String getSurname() {
+        return surname;
+    }
 
+    @Override
+    public String toString() {
+        return "Транзакиця " +
+                "id='" + id + '\'' +
+                ", Имя - '" + name + '\'' +
+                ", Фамилия -'" + surname + '\'' +
+                ", проведена в '" + time + '\'' +
+                ", с помощью карты'" + cardType + '\'' +
+                ", сумма транзакции = " + amount;
+    }
 }

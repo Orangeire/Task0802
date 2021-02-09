@@ -61,23 +61,32 @@ public class TransactionsMenu {
         printTransactionsMenu();
     }
 
-    private void printTransactionsSortedByAmount() {
-        System.out.println("hui5");
+    private void printAllTransactionsBySurname() {
+        System.out.print("Все транзакции пользователя с фамилией " );
+        String surnameFromConsole = getUsersSurnameFromConsole();
+        System.out.println(surnameFromConsole);
+        Transaction userFromRepo = service.getUsersTransactionsBySurname();
+        System.out.println(userFromRepo);
     }
 
-    private void printALlTransactionsByCardType() {
-        System.out.println("hui4");
-    }
-
-    private void printAllTransactionsForAAmountInterval() {
-        System.out.println("hui3");
+    private String getUsersSurnameFromConsole() {
+        System.out.println("Введите нужную фамилию ");
+        return in.next();
     }
 
     private void printAllTransactionsForAPeriodOfATime() {
         System.out.println("hui2");
     }
 
-    private void printAllTransactionsBySurname() {
-        System.out.println("hui1");
+    private void printAllTransactionsForAAmountInterval() {
+        System.out.println("hui3");
+    }
+
+    private void printALlTransactionsByCardType() {
+        System.out.println("hui4");
+    }
+
+    private void printTransactionsSortedByAmount() {
+        System.out.println("hui5");
     }
 }
