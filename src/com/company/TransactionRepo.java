@@ -16,7 +16,6 @@ public class TransactionRepo {
 
     public void add(Transaction transaction) {
         transactions.add(transaction);
-        System.out.println(transactions.size());
     }
 
     public void printRepo() {
