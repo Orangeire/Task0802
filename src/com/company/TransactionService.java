@@ -22,17 +22,15 @@ public class TransactionService {
         transactionRepo.printTransactionsThatUseUsersCardType(cardType);
     }
 
-    public void printAllTransactionsForAAmountInterval() {
-    }
-
-    public void printAllTransactionsForAPeriodOfATime() {
-    }
-
     public void printAllTransactionsBySurname(String surname) {
         transactionRepo.printTransactionsWithUsersSurname(surname);
     }
 
     public void printAllTransactions() {
         transactionRepo.printRepo();
+    }
+
+    public void printTransactionsFromAmountInterval(double lowerBound, double upperBound) {
+        transactionRepo.printTransactionsFromInterval(lowerBound, upperBound);
     }
 }

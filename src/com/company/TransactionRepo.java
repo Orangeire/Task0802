@@ -55,5 +55,15 @@ public class TransactionRepo {
                 System.out.println(currentTransaction.toString());
         }
     }
+
+    public void printTransactionsFromInterval(double lowerBound,
+                                              double upperBound) {
+        for (int i = 0; i < transactions.size(); i++) {
+            Transaction currentTransaction = transactions.get(i);
+            if (currentTransaction.getAmount() >= lowerBound &&
+                    currentTransaction.getAmount() <= upperBound)
+                System.out.println(currentTransaction.toString());
+        }
+    }
 }
 

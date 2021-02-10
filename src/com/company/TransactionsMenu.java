@@ -21,21 +21,19 @@ public class TransactionsMenu {
 
     private void printTransactionsMenu() {
         System.out.println("1) Вывести все транзакции по фамилии пользователя");
-        System.out.println("2) Вывести все транзакции за определенный " +
-                "периолд времени");
-        System.out.println("3) Вывести все транзакции сумма которых " +
-                "принадлежит вашемуинтервалу");
-        System.out.println("4) Вывести все транзакции, проведенные " +
+        System.out.println("2) Вывести все транзакции сумма которых " +
+                "принадлежит вашему интервалу");
+        System.out.println("3) Вывести все транзакции, проведенные " +
                 "с использованием определенной карты");
-        System.out.println("5) Вывести список всех транзакций," +
+        System.out.println("4) Вывести список всех транзакций," +
                 " отсортированный по сумме");
-        System.out.println("6) Добавить транзакцию");
-        System.out.println("7) Вывести список всех транзакций");
+        System.out.println("5) Добавить транзакцию");
+        System.out.println("6) Вывести список всех транзакций");
         System.out.println("0) Завершить работу");
 
         int choice = in.nextInt();
 
-        if( choice > -1 && choice < 8) {
+        if( choice > -1 && choice < 7) {
             switch (choice) {
                 case 1:
                     System.out.println("Введите нужную фамилию: ");
@@ -43,24 +41,26 @@ public class TransactionsMenu {
                     service.printAllTransactionsBySurname(surnameFromConsole);
                     break;
                 case 2:
-                    service.printAllTransactionsForAPeriodOfATime();
+                    System.out.println("Введите нижнюю границу интервала: ");
+                    double lowerBound = getLowerBoundFromConsole();
+                    System.out.println("Введите верхнюю границу интервала: ");
+                    double upperBound = getUpperBoundFromConsole();
+                    service.printTransactionsFromAmountInterval(lowerBound,
+                            upperBound);
                     break;
                 case 3:
-                    service.printAllTransactionsForAAmountInterval();
-                    break;
-                case 4:
                     System.out.println("Введите нужный тип карты: ");
                     String cardTypeFromConsole = getCardTypeFromConsole();
                     service.printALlTransactionsByCardType(cardTypeFromConsole);
                     break;
-                case 5:
+                case 4:
                     service.printTransactionsSortedByAmount();
                     break;
-                case 6:
+                case 5:
                     Transaction usersTransaction = getTransactionFromConsole();
                     service.addTransaction(usersTransaction);
                     break;
-                case 7:
+                case 6:
                     service.printAllTransactions();
                     break;
                 case 0:
@@ -71,6 +71,16 @@ public class TransactionsMenu {
         printTransactionsMenu();
         }
         printTransactionsMenu();
+    }
+
+    private double getUpperBoundFromConsole() {
+        double upperBoundFromConsole = in.nextDouble();
+        return upperBoundFromConsole;
+    }
+
+    private double getLowerBoundFromConsole() {
+        double lowerBoundFromConsole = in.nextDouble();
+        return lowerBoundFromConsole;
     }
 
     private String getSurnameFromConsole() {
