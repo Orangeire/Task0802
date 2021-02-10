@@ -47,5 +47,13 @@ public class TransactionRepo {
                 System.out.println(currentTransaction.toString());
         }
     }
+
+    public void printTransactionsWithUsersSurname(String surname) {
+        for (int i = 0; i < transactions.size(); i++) {
+            Transaction currentTransaction = transactions.get(i);
+            if (currentTransaction.getSurname().equals(surname))
+                System.out.println(currentTransaction.toString());
+        }
+    }
 }
 

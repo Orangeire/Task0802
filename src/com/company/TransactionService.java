@@ -28,7 +28,8 @@ public class TransactionService {
     public void printAllTransactionsForAPeriodOfATime() {
     }
 
-    public void printAllTransactionsBySurname() {
+    public void printAllTransactionsBySurname(String surname) {
+        transactionRepo.printTransactionsWithUsersSurname(surname);
     }
 
     public void printAllTransactions() {

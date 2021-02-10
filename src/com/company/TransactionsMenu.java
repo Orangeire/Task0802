@@ -38,7 +38,9 @@ public class TransactionsMenu {
         if( choice > -1 && choice < 8) {
             switch (choice) {
                 case 1:
-                    service.printAllTransactionsBySurname();
+                    System.out.println("Введите нужную фамилию: ");
+                    String surnameFromConsole = getSurnameFromConsole();
+                    service.printAllTransactionsBySurname(surnameFromConsole);
                     break;
                 case 2:
                     service.printAllTransactionsForAPeriodOfATime();
@@ -69,6 +71,11 @@ public class TransactionsMenu {
         printTransactionsMenu();
         }
         printTransactionsMenu();
+    }
+
+    private String getSurnameFromConsole() {
+        String surnameFromConsole = in.next();
+        return surnameFromConsole;
     }
 
     private String getCardTypeFromConsole() {
