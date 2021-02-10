@@ -18,7 +18,8 @@ public class TransactionService {
         transactionRepo.sortByAmount();
     }
 
-    public void printALlTransactionsByCardType() {
+    public void printALlTransactionsByCardType(String cardType) {
+        transactionRepo.printTransactionsThatUseUsersCardType(cardType);
     }
 
     public void printAllTransactionsForAAmountInterval() {

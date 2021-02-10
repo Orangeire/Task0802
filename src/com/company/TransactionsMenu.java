@@ -26,8 +26,7 @@ public class TransactionsMenu {
         System.out.println("3) Вывести все транзакции сумма которых " +
                 "принадлежит вашемуинтервалу");
         System.out.println("4) Вывести все транзакции, проведенные " +
-                "с использованием определенной карты" +
-                "( Visa / Mastercard/ Maestro/ Белкарт");
+                "с использованием определенной карты");
         System.out.println("5) Вывести список всех транзакций," +
                 " отсортированный по сумме");
         System.out.println("6) Добавить транзакцию");
@@ -48,7 +47,9 @@ public class TransactionsMenu {
                     service.printAllTransactionsForAAmountInterval();
                     break;
                 case 4:
-                    service.printALlTransactionsByCardType();
+                    System.out.println("Введите нужный тип карты: ");
+                    String cardTypeFromConsole = getCardTypeFromConsole();
+                    service.printALlTransactionsByCardType(cardTypeFromConsole);
                     break;
                 case 5:
                     service.printTransactionsSortedByAmount();
@@ -68,6 +69,11 @@ public class TransactionsMenu {
         printTransactionsMenu();
         }
         printTransactionsMenu();
+    }
+
+    private String getCardTypeFromConsole() {
+        String cardTypeFromConsole = in.next();
+        return cardTypeFromConsole;
     }
 
     private Transaction getTransactionFromConsole() {

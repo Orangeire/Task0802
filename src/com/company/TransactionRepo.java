@@ -21,7 +21,6 @@ public class TransactionRepo {
 
     public void printRepo() {
         if (!transactions.isEmpty()) {
-            System.out.println(transactions.size());
             for (int i = 0; i < transactions.size(); i++) {
                 Transaction currentTransaction = transactions.get(i);
                 System.out.println(currentTransaction.toString());
@@ -39,6 +38,14 @@ public class TransactionRepo {
                 .forEach(System.out::println);
 
 
+    }
+
+    public void printTransactionsThatUseUsersCardType(String cardType) {
+        for (int i = 0; i < transactions.size(); i++) {
+            Transaction currentTransaction = transactions.get(i);
+            if (currentTransaction.getCardType().equals(cardType))
+                System.out.println(currentTransaction.toString());
+        }
     }
 }
 
