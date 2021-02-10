@@ -4,9 +4,9 @@ import java.util.*;
 
 public class TransactionRepo {
 
-    private ArrayList<Transaction> transactions;
+    private List<Transaction> transactions;
 
-    public TransactionRepo(ArrayList<Transaction> transactions) {
+    public TransactionRepo(List<Transaction> transactions) {
         this.transactions = transactions;
     }
 
@@ -30,6 +30,15 @@ public class TransactionRepo {
             System.out.println("Список транзакций пуст");
             return;
         }
+    }
+
+    public void sortByAmount() {
+        transactions.stream()
+                .sorted(Comparator.comparing(Transaction::getAmount)
+                        .thenComparing(Transaction::getId))
+                .forEach(System.out::println);
+
+
     }
 }
 

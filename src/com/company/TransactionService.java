@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Collections;
+
 public class TransactionService {
 
     private TransactionRepo transactionRepo;
@@ -13,6 +15,7 @@ public class TransactionService {
     }
 
     public void printTransactionsSortedByAmount() {
+        transactionRepo.sortByAmount();
     }
 
     public void printALlTransactionsByCardType() {
