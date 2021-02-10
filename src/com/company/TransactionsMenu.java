@@ -9,7 +9,7 @@ public class TransactionsMenu {
 
     public TransactionsMenu(){
         in = new Scanner(System.in);
-        TransactionService transactionService = new TransactionService();
+        service = new TransactionService();
         printMenu();
     }
 
@@ -30,26 +30,35 @@ public class TransactionsMenu {
                 "( Visa / Mastercard/ Maestro/ Белкарт");
         System.out.println("5) Вывести список всех транзакций," +
                 " отсортированный по сумме");
+        System.out.println("6) Добавить транзакцию");
+        System.out.println("7) Вывести список всех транзакций");
         System.out.println("0) Завершить работу");
 
         int choice = in.nextInt();
 
-        if( choice > -1 && choice < 7) {
+        if( choice > -1 && choice < 8) {
             switch (choice) {
                 case 1:
-                    printAllTransactionsBySurname();
+                    service.printAllTransactionsBySurname();
                     break;
                 case 2:
-                    printAllTransactionsForAPeriodOfATime();
+                    service.printAllTransactionsForAPeriodOfATime();
                     break;
                 case 3:
-                    printAllTransactionsForAAmountInterval();
+                    service.printAllTransactionsForAAmountInterval();
                     break;
                 case 4:
-                    printALlTransactionsByCardType();
+                    service.printALlTransactionsByCardType();
                     break;
                 case 5:
-                    printTransactionsSortedByAmount();
+                    service.printTransactionsSortedByAmount();
+                    break;
+                case 6:
+                    Transaction usersTransaction = getTransactionFromConsole();
+                    service.addTransaction(usersTransaction);
+                    break;
+                case 7:
+                    service.printAllTransactions();
                     break;
                 case 0:
                     return;
@@ -61,32 +70,21 @@ public class TransactionsMenu {
         printTransactionsMenu();
     }
 
-    private void printAllTransactionsBySurname() {
-        System.out.print("Все транзакции пользователя с фамилией " );
-        String surnameFromConsole = getUsersSurnameFromConsole();
-        System.out.println(surnameFromConsole);
-        Transaction userFromRepo = service.getUsersTransactionsBySurname();
-        System.out.println(userFromRepo);
-    }
-
-    private String getUsersSurnameFromConsole() {
-        System.out.println("Введите нужную фамилию ");
-        return in.next();
-    }
-
-    private void printAllTransactionsForAPeriodOfATime() {
-        System.out.println("hui2");
-    }
-
-    private void printAllTransactionsForAAmountInterval() {
-        System.out.println("hui3");
-    }
-
-    private void printALlTransactionsByCardType() {
-        System.out.println("hui4");
-    }
-
-    private void printTransactionsSortedByAmount() {
-        System.out.println("hui5");
+    private Transaction getTransactionFromConsole() {
+        Transaction transaction = new Transaction();
+        System.out.println("Введите id: ");
+        transaction.setId(in.next());
+        System.out.println("Введите имя пользователя: ");
+        transaction.setName(in.next());
+        System.out.println("Введите фамилию пользователя: ");
+        transaction.setSurname(in.next());
+        System.out.println("Введите время проведения операции: ");
+        transaction.setTime(in.next());
+        System.out.println("Введите сумму опреации: ");
+        transaction.setAmount(in.nextDouble());
+        System.out.println("Введите тип карты: ");
+        transaction.setCardType(in.next());
+        System.out.println("Транзакция успешно добавлена!");
+        return transaction;
     }
 }

@@ -1,91 +1,35 @@
 package com.company;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class TransactionRepo {
 
-    private Set<Transaction> transactions;
+    private ArrayList<Transaction> transactions;
 
-    public TransactionRepo() {
-        this.transactions = new Set<>() {
-            @Override
-            public int size() {
-                return 0;
-            }
-
-            @Override
-            public boolean isEmpty() {
-                return false;
-            }
-
-            @Override
-            public boolean contains(Object o) {
-                return false;
-            }
-
-            @Override
-            public Iterator<Transaction> iterator() {
-                return null;
-            }
-
-            @Override
-            public Object[] toArray() {
-                return new Object[0];
-            }
-
-            @Override
-            public <T> T[] toArray(T[] a) {
-                return null;
-            }
-
-            @Override
-            public boolean add(Transaction transaction) {
-                return false;
-            }
-
-            @Override
-            public boolean remove(Object o) {
-                return false;
-            }
-
-            @Override
-            public boolean containsAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public boolean addAll(Collection<? extends Transaction> c) {
-                return false;
-            }
-
-            @Override
-            public boolean retainAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public boolean removeAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public void clear() {
-
-            }
-
-            @Override
-            public boolean equals(Object o) {
-                return false;
-            }
-
-            @Override
-            public int hashCode() {
-                return 0;
-            }
-        };
+    public TransactionRepo(ArrayList<Transaction> transactions) {
+        this.transactions = transactions;
     }
 
+    public TransactionRepo() {
+        this.transactions = new ArrayList<>();
+    }
+
+    public void add(Transaction transaction) {
+        transactions.add(transaction);
+        System.out.println(transactions.size());
+    }
+
+    public void printRepo() {
+        if (!transactions.isEmpty()) {
+            System.out.println(transactions.size());
+            for (int i = 0; i < transactions.size(); i++) {
+                Transaction currentTransaction = transactions.get(i);
+                System.out.println(currentTransaction.toString());
+            }
+        }else{
+            System.out.println("Список транзакций пуст");
+            return;
+        }
+    }
 }
+

@@ -8,8 +8,26 @@ public class TransactionService {
         transactionRepo = new TransactionRepo();
     }
 
+    public void addTransaction(Transaction transaction) {
+        transactionRepo.add(transaction);
+    }
 
-//    public Transaction getUsersTransactionsBySurname() {
-//        return
-//    }
+    public void printTransactionsSortedByAmount() {
+    }
+
+    public void printALlTransactionsByCardType() {
+    }
+
+    public void printAllTransactionsForAAmountInterval() {
+    }
+
+    public void printAllTransactionsForAPeriodOfATime() {
+    }
+
+    public void printAllTransactionsBySurname() {
+    }
+
+    public void printAllTransactions() {
+        transactionRepo.printRepo();
+    }
 }
